@@ -1,29 +1,28 @@
 # Android_appcrawl_from_google_play_store
-Written in Python using open street map API to get postal address corresponding to latitude and longitude
+Written in Python using web crawling of google play store to get app category
 
 
 
-This project is to address below real life problem. Please note that data given is jst sample. Real data cannot be shared. Real data is also large in volume.
+This project is to address below real life problem. Please note that data given is just sample. Real data cannot be shared. Real data is also large in volume.
 
-Problem Statement: An organization wants to do campaign for different kinds of customers. They like to study density of customer for different location based on customer complaint received from various location. Geo-location is based on latitude and longitude. In this problem we are own for clustering customers into three classes depending on the geo-location of those customers.
+Problem Statement: An organization wants to do campaign for different kinds of customers. They like to know the usage of what kind of mobile app customer is using. There is an app to collect information from customer device. It captures actual package name of the application. However, every application is of different category - like song, education, game etc. It is know which type of application customer is using most to understand the behaviour. It is limited to only Android app for the time being and only to Google Play store app.
 
-Data file: Sample data file contains several fields comma separated. We are interested only last two fields which represent latitude and longitude. rest of the fields are simple ignored
+Data file: Sample data file contains app package name
 
-Solution: We have applied K-Means machine learning algorithm here. The program is written in python and executed in Spark platform. Therefore, several required Spark libraries are imported.
-
-Preprocess: Data is real life. Hence, preprocessing and cleanup are required. There are entries where latitude = 0 and longitude = 0. However, in practical life it is not real that any customer stays in that kind of location. So, those entries are cleaned before processing.
+Solution: Program is written in Python and to crawl google play store web to get the category. Program can be modified to fetch other attribute as well.
 
 Prerequisite:
 
 You need to have Python installed version 3.5 or above and environment setup properly
-You need to have Spark installed and environment variables setup properly
+You need to have BeautifulSoup and request package installed 
 Usage: It is written and tested for Windows 7 OS. It should run in other environment also, but not tested. May be little bit changes are required as per demand of that OS. Please keep data file in same folder where source program is located. Data file is without any header. From command line following command should be executed.
 
-spark-submit clusterCustomer.py
+python getAppCategory.py
 
-Output: It will generate a comma separated file, "sample_output.csv" in same folder where datafile and source program are located. Output file will have three fields separated with comma. Fields are as below
+Output: It will generate a "|" separated file, "appresults.csv" in same folder where datafile and source program are located. Output file will have three fields separated with comma. Fields are as below
 
-latitude
-longitude
-cluster label (0, 1 or 2)
+app package name
+app user friendly name
+app category
+
 ************ Enjoy and don't forget to give credit if it helps ****************
