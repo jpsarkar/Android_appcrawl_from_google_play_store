@@ -37,12 +37,10 @@ with open('applist.csv', 'r') as infile:
         for fileline in infile:
                 output_list =[]
                 i = i + 1
-                fileline = fileline.strip()                
-                line = fileline.split(":")[1]
+                line = fileline.strip()           
+
                 app_url = appPrefix + line
                 app_details =  playstore.getPlaystoreDetail(app_url,line)
                 output_list.append([line,app_details['title'].encode("utf-8"),app_details['app_category'].encode("utf-8")])
-                a.writerows(output_list)
-                print ("Row: " + str(i) + " : ")
-                print (app_details)
+                a.writerows(output_list)                
         fp.close()
